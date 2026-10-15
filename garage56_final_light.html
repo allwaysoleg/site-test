@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1a1a1a;
+  --ink2:#555;
+  --ink3:#999;
+  --bg:#fff;
+  --bg2:#f7f7f5;
+  --bg3:#eeede8;
+  --accent:#c0392b;
+  --accent2:#e74c3c;
+  --gold:#b8860b;
+  --rule:#e0e0e0;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* ===== ЛОГОТИП — точно по оригиналу ===== */
+.brand{
+  display:inline-flex;align-items:center;gap:0;
+  text-decoration:none;line-height:1;
+}
+.brand-garage{
+  font-family:'Oswald',sans-serif;
+  font-weight:700;
+  font-size:var(--logo-size, 36px);
+  letter-spacing:1px;
+  color:var(--ink);
+  text-transform:uppercase;
+}
+.brand-56{
+  font-family:'Oswald',sans-serif;
+  font-weight:700;
+  font-size:var(--logo-size, 36px);
+  letter-spacing:1px;
+  color:var(--accent);
+  text-transform:uppercase;
+}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:72px;
+}
+nav .brand{--logo-size:30px;}
+.nav-right{display:flex;align-items:center;gap:36px;}
+.nav-phones a{
+  display:block;font-size:14px;font-weight:500;
+  color:var(--ink);text-decoration:none;letter-spacing:0.2px;
+  transition:color .2s;
+}
+.nav-phones a:hover{color:var(--accent);}
+.nav-cta{
+  background:var(--accent);color:#fff;
+  padding:11px 28px;font-size:12px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;transition:background .2s;white-space:nowrap;
+}
+.nav-cta:hover{background:#a93226;}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  padding:130px 56px 80px;
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:60px;align-items:center;
+  position:relative;overflow:hidden;
+}
+.hero-bg-strip{
+  position:absolute;right:0;top:0;bottom:0;width:36%;
+  background:var(--bg2);z-index:0;
+}
+.hero-bg-strip::before{
+  content:'';position:absolute;top:0;left:-1px;bottom:0;width:1px;
+  background:var(--rule);
+}
+.hero-left{position:relative;z-index:1;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:12px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:28px;
+}
+.eyebrow::before{content:'';width:28px;height:2px;background:var(--accent);}
+h1{
+  font-family:'Oswald',sans-serif;
+  font-size:clamp(58px,7.5vw,96px);
+  font-weight:700;line-height:1.0;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+  color:var(--ink);margin-bottom:28px;
+}
+h1 em{font-style:normal;color:var(--accent);}
+.hero-sub{
+  font-size:16px;line-height:1.85;color:var(--ink2);
+  max-width:480px;margin-bottom:48px;
+}
+.hero-actions{display:flex;align-items:center;gap:24px;}
+.btn-red{
+  background:var(--accent);color:#fff;
+  padding:15px 40px;font-size:13px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;transition:background .2s;
+}
+.btn-red:hover{background:#a93226;}
+.btn-outline{
+  font-size:14px;color:var(--ink2);text-decoration:none;
+  border-bottom:1px solid var(--rule);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.btn-outline:hover{color:var(--accent);border-color:var(--accent);}
+
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;gap:3px;}
+.h-stat{
+  background:var(--bg);border:1px solid var(--rule);
+  padding:28px 32px;display:flex;align-items:baseline;gap:14px;
+}
+.h-stat-n{font-family:'Oswald',sans-serif;font-size:52px;line-height:1;color:var(--ink);font-weight:700;}
+.h-stat-l{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);}
+.h-stat.red{background:var(--accent);border-color:var(--accent);}
+.h-stat.red .h-stat-n,.h-stat.red .h-stat-l{color:#fff;}
+.h-stat.red .h-stat-l{opacity:.75;}
+
+/* ===== SERVICES ===== */
+.services{padding:110px 56px;background:var(--bg);}
+.sec-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:56px;
+}
+.sec-eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px;}
+.sec-title{
+  font-family:'Oswald',sans-serif;
+  font-size:clamp(40px,5vw,60px);
+  font-weight:700;text-transform:uppercase;
+  line-height:1;color:var(--ink);
+}
+.sec-num{
+  font-family:'Oswald',sans-serif;
+  font-size:100px;line-height:1;
+  color:var(--bg3);font-weight:700;
+  user-select:none;
+}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;}
+.svc{
+  background:var(--bg2);padding:48px 44px;
+  position:relative;overflow:hidden;
+  transition:background .25s;
+}
+.svc:hover{background:#fff;box-shadow:0 0 0 1px var(--rule);}
+.svc-bar{
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s;
+}
+.svc:hover .svc-bar{transform:scaleX(1);}
+.svc-idx{
+  font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;
+  color:var(--ink3);letter-spacing:3px;
+  margin-bottom:20px;display:flex;align-items:center;gap:10px;
+}
+.svc-idx::after{content:'';flex:1;height:1px;background:var(--rule);}
+.svc h3{
+  font-family:'Oswald',sans-serif;
+  font-size:30px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.5px;
+  color:var(--ink);margin-bottom:16px;line-height:1.15;
+}
+.svc p{font-size:15px;line-height:1.8;color:var(--ink2);}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px;}
+.tag{
+  font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  background:var(--bg3);color:var(--ink2);
+  padding:5px 12px;font-weight:600;
+}
+.badge-pop{
+  display:inline-block;background:var(--accent);color:#fff;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;padding:4px 12px;margin-bottom:16px;
+}
+
+/* ===== TRUST ===== */
+.trust{padding:100px 56px;background:var(--bg2);border-top:1px solid var(--rule);}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:52px;}
+.t-item{
+  background:var(--bg);padding:36px 30px;
+  border-top:3px solid transparent;transition:border-color .3s;
+}
+.t-item:hover{border-color:var(--accent);}
+.t-n{font-family:'Oswald',sans-serif;font-size:56px;font-weight:700;line-height:1;color:var(--ink);margin-bottom:8px;}
+.t-l{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);}
+.t-d{font-size:13px;color:var(--ink2);margin-top:10px;line-height:1.65;}
+.t-item.hi{border-top-color:var(--accent);}
+.t-item.hi .t-n{color:var(--accent);}
+
+/* ===== CONTACTS ===== */
+.contacts{
+  padding:110px 56px;
+  display:grid;grid-template-columns:1fr 1.1fr;
+  gap:80px;border-top:1px solid var(--rule);
+}
+.contacts-left {}
+.contacts-left .sec-eyebrow{margin-bottom:12px;}
+.contacts-left h2{
+  font-family:'Oswald',sans-serif;
+  font-size:clamp(40px,4.5vw,58px);
+  font-weight:700;text-transform:uppercase;
+  line-height:1;margin-bottom:48px;
+}
+.c-row{display:flex;gap:18px;margin-bottom:28px;align-items:flex-start;}
+.c-icon{
+  width:40px;height:40px;flex-shrink:0;
+  background:var(--bg2);border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+}
+.c-icon svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.c-row strong{
+  display:block;font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px;
+}
+.c-row a{
+  font-size:17px;font-weight:600;color:var(--ink);
+  text-decoration:none;display:block;line-height:1.5;
+  transition:color .2s;
+}
+.c-row a:hover{color:var(--accent);}
+.c-row span{font-size:15px;color:var(--ink2);line-height:1.6;display:block;}
+
+/* MAP */
+.map-wrap{
+  width:100%;border:1px solid var(--rule);overflow:hidden;
+  min-height:400px;position:relative;
+}
+.map-wrap iframe{
+  width:100%;height:100%;min-height:420px;
+  border:none;display:block;
+  filter:contrast(1.05);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  border-top:2px solid var(--ink);
+  padding:28px 56px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--bg);
+}
+footer .brand{--logo-size:24px;}
+footer p{font-size:12px;color:var(--ink3);letter-spacing:.5px;}
+
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .hero{grid-template-columns:1fr;padding:110px 20px 60px;}
+  .hero-bg-strip{display:none;}
+  .hero-right{display:none;}
+  .services,.trust,.contacts{padding:60px 20px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .trust-grid{grid-template-columns:1fr 1fr;}
+  .contacts{grid-template-columns:1fr;}
+  .map-wrap{min-height:280px;}
+  footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="brand">
+    <span class="brand-garage">Гараж</span>
+    <span class="brand-56">56</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-phones">
+      <a href="tel:+79033658883">+7 (903) 365-88-83</a>
+      <a href="tel:+73532218883">+7 (3532) 21-888-3</a>
+    </div>
+    <a href="#contacts" class="nav-cta">Записаться</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-strip"></div>
+  <div class="hero-left">
+    <p class="eyebrow">Оренбург · Монтажников, 7</p>
+    <h1>Ваш автомобиль<br>в <em>надёжных</em><br>руках</h1>
+    <p class="hero-sub">Сертифицированные специалисты, индивидуальный подход и гарантия на все виды работ — от автоэлектрики до предпродажной подготовки.</p>
+    <div class="hero-actions">
+      <a href="#contacts" class="btn-red">Записаться</a>
+      <a href="#services" class="btn-outline">Наши услуги</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="h-stat">
+      <span class="h-stat-n">12+</span>
+      <span class="h-stat-l">Лет<br>опыта</span>
+    </div>
+    <div class="h-stat">
+      <span class="h-stat-n">4</span>
+      <span class="h-stat-l">Направления<br>работ</span>
+    </div>
+    <div class="h-stat red">
+      <span class="h-stat-n">100%</span>
+      <span class="h-stat-l">Гарантия<br>качества</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-head">
+    <div>
+      <p class="sec-eyebrow">Что мы делаем</p>
+      <h2 class="sec-title">Наши услуги</h2>
+    </div>
+    <div class="sec-num">04</div>
+  </div>
+  <div class="svc-grid">
+
+    <div class="svc">
+      <div class="svc-bar"></div>
+      <div class="svc-idx">01</div>
+      <h3>Установка<br>оборудования</h3>
+      <p>Сигнализации, камеры, парктроники, мультимедийные системы, видеорегистраторы — профессиональная установка любого оборудования.</p>
+      <div class="tags">
+        <span class="tag">Сигнализации</span>
+        <span class="tag">Камеры</span>
+        <span class="tag">Мультимедиа</span>
+      </div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-bar"></div>
+      <div class="svc-idx">02</div>
+      <h3>Автоэлектрик</h3>
+      <p>Диагностика бортовой электроники, ремонт проводки, замена стартеров и генераторов. Работаем с любыми марками автомобилей.</p>
+      <div class="tags">
+        <span class="tag">Диагностика</span>
+        <span class="tag">Проводка</span>
+        <span class="tag">Генераторы</span>
+      </div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-bar"></div>
+      <div class="svc-idx">03</div>
+      <h3>Тонировка<br>и Бронировка</h3>
+      <p>Профессиональная тонировка и оклейка защитными плёнками. Сохраняем лакокрасочное покрытие кузова на долгие годы.</p>
+      <div class="tags">
+        <span class="tag">Тонировка</span>
+        <span class="tag">Бронировка</span>
+        <span class="tag">Плёнки</span>
+      </div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-bar"></div>
+      <div class="svc-idx">04</div>
+      <div class="badge-pop">Популярная услуга</div>
+      <h3>Предпродажная<br>подготовка</h3>
+      <p>Химчистка салона, полировка кузова, устранение дефектов и полная диагностика всех систем. Увеличиваем рыночную стоимость автомобиля.</p>
+      <div class="tags">
+        <span class="tag">Химчистка</span>
+        <span class="tag">Полировка</span>
+        <span class="tag">Диагностика</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="sec-head">
+    <div>
+      <p class="sec-eyebrow">Почему выбирают нас</p>
+      <h2 class="sec-title">Наши преимущества</h2>
+    </div>
+  </div>
+  <div class="trust-grid">
+    <div class="t-item">
+      <div class="t-n">12+</div>
+      <div class="t-l">Лет на рынке</div>
+      <p class="t-d">Стабильная работа и постоянные клиенты с 2012 года</p>
+    </div>
+    <div class="t-item">
+      <div class="t-n">∞</div>
+      <div class="t-l">Удобное время</div>
+      <p class="t-d">Принимаем заявки в любое удобное для вас время</p>
+    </div>
+    <div class="t-item">
+      <div class="t-n">100%</div>
+      <div class="t-l">Гарантия</div>
+      <p class="t-d">Гарантия на все выполненные работы и комплектующие</p>
+    </div>
+    <div class="t-item hi">
+      <div class="t-n">★★★★★</div>
+      <div class="t-l">Сертифицированы</div>
+      <p class="t-d">Высококлассные мастера с подтверждённой квалификацией</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="contacts" id="contacts">
+  <div class="contacts-left">
+    <p class="sec-eyebrow">Связаться с нами</p>
+    <h2>Запись<br>и контакты</h2>
+
+    <div class="c-row">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.7a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.57a16 16 0 0 0 6 6l.95-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.9 16a2 2 0 0 1 .1.92z"/></svg>
+      </div>
+      <div>
+        <strong>Телефоны</strong>
+        <a href="tel:+79033658883">+7 (903) 365-88-83</a>
+        <a href="tel:+73532218883">+7 (3532) 21-888-3</a>
+      </div>
+    </div>
+
+    <div class="c-row">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <strong>Адрес</strong>
+        <span>г. Оренбург, ул. Монтажников, дом 7</span>
+      </div>
+    </div>
+
+    <div class="c-row">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <strong>Режим работы</strong>
+        <span>В удобное для вас время</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- РЕАЛЬНАЯ КАРТА GOOGLE MAPS -->
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372.0!2d55.1055!3d51.7873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4114d1d7d0e7a0e3%3A0x0!2z0YPQuy4g0JzQvtC90YLQsNC20L3QuNC60L7QsiwgNywg0J7RgNC10L3QsdGD0YDQsw!5e0!3m2!1sru!2sru!4v1711900000000!5m2!1sru!2sru&q=ул.+Монтажников+7+Оренбург&center=51.7873,55.1055&zoom=16"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Гараж56 на карте">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="brand">
+    <span class="brand-garage">Гараж</span>
+    <span class="brand-56">56</span>
+  </a>
+  <p>© 2024 Гараж56 · Оренбург</p>
+  <p>+7 (903) 365-88-83</p>
+</footer>
+
+</body>
+</html>
